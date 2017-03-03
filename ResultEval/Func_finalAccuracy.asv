@@ -1,4 +1,4 @@
-load('MitoDNNv2_SampleIVplus2_revised_pt5_orilabel.mat')
+function [resultTest, ] = Func_finalAccuracy(filename)
 PredictionFinal = PredictionFinal{1};
 UnrecordedPredFinal = UnrecordedPredFinal{1};
 load('ICPR14split.mat')
@@ -19,6 +19,8 @@ Prec = TP / (TP + FP);
 Recall = TP / (TP + FN);
 F_meas = 2 * Prec * Recall / (Prec + Recall);
 
+resultTest = {TP, FP, FN, Prec, Recall, F_meas};
+
 idx = 1;
 for groupID = groups
 list = zeros(0,1);
@@ -27,6 +29,7 @@ for i=1:length(UnrecordedPredFinal)
         list = [list, i];
     end
 end
+
 
 
 TP_group(idx) = sum(floor(Label(testList,1)/100)~=groupID & table(testList,1)>0 & table(testList,5)>0);

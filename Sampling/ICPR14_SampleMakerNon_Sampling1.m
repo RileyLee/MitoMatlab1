@@ -1,7 +1,6 @@
-OriPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\normFrames_Reinhard\train\x40\';
-OutPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_SamplePatches\SampleIV\Non_s2\';
-% ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\SampleIII1\SampleIV_s1\Ave\';
-ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\SampleIII1\SampleIV_s1\Ave\';
+OriPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\OriginalFrames\train\x40\';
+OutPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_SamplePatches\SampleVI\non\';
+ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_Prediction\ICPR12_FT_Fast\';
 GT_Path = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\GroundTruth\train\relabeled_x40_v2\';
 
 addpath('E:\LeeYuguang\MitosisExtraction\Toolbox\ICPR_Toolbox');
@@ -11,8 +10,8 @@ load('E:\LeeYuguang\MitosisExtraction\CodeCenter\Sampling\ICPR14split.mat')
 
 char = 'abcd';
 Char = 'ABCD';
-%probstring = '_DNN12_FT_Ave';
-probstring = '_DNN12_SampleIII_Ave';
+probstring = '_DNN12_FT_Ave';
+%probstring = '_DNN12_SampleIII_Ave';
 
 load('FixedICPR14MitoCenter.mat')
 
@@ -21,13 +20,13 @@ SE = (SE>=0.02);
 
 % SUM = 1242298960-907488324;  %Aug set
 % SUM = 1396350202-1019149661;
-SUM = 1418276755;   % ICPR14_SampleIIIplus from DNN12_FT_Ave
-% TotalSample = 1418276755;          %Regular set
-TotalSample = 1500000;
+SUM = 100244098;   % ICPR14_SampleIIIplus from DNN12_FT_Ave
+% TotalSample = 347906;          %Regular set
+TotalSample = 4000000;
 Sum1 = 0;
 total = 0;
 
-for File = [trainSet(2:end)]
+for File = [700, 701, 702, 703, 704]
     FileName = ['A',num2str(floor(File/100), '%02d'), '_', num2str(mod(File,100), '%02d')];
     folderName = FileName;
     mkdir([OutPath,folderName]);

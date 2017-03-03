@@ -1,6 +1,6 @@
 function SamplewProbMat(OriImage, ProbMap, sampleSize, Path,Name)
 
-OriImage = uint8(AddMargin(OriImage,80,1));
+OriImage = uint8(AddMargin(OriImage,80,2));
 ProbMap = AddMargin(ProbMap,80,0);
 
 

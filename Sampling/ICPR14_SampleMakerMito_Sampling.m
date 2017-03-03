@@ -1,5 +1,5 @@
 OriPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\OriginalFrames\train\x40\';
-OutPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_SamplePatches\SampleIV\Mitosis\';
+OutPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_SamplePatches\SampleIV\newTrain\mito\';
 ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\DNN12_ICPR14_SampleIII1\';
 GT_Path = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\GroundTruth\train\relabeled_x40\';
 
@@ -22,7 +22,7 @@ SE = (SE>=0.02);
 
 SUM = 20109104;  % sum of prob maps
 % TotalSample = 347906;          %Regular set
-TotalSample = 100000;
+TotalSample = 1000000;
 Sum1 = 0;
 total = 0;
 

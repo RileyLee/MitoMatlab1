@@ -1,17 +1,17 @@
 clear
 OriginPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\normFrames_Reinhard\train\x40\';
-ResultPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\DNN12_ICPR14_SampleIII2\Ave\';
+ResultPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\MitoDNN12_SampleIII_1plus_revised\Train\';
 ProposalPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\Prediction\NucleiSegment\train\x40\'
 OutPath = 'E:\LeeYuguang\MitosisExtraction\CodeCenter\Histop\ICPR14only\';
  load('E:\LeeYuguang\MitosisExtraction\Toolbox\ICPR_Toolbox\labelsICPR14csv.mat');
 %load('E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_FineTune\fixedLabels_ICPR2014.mat')
 load('ICPR14split.mat')
-Model = '_SampleII2_DNN10'
+Model = '_MitoDNN12_SampleIII1plus2'
 
 
 %%  Input Parameters
 thresholdList = [0.2,0.5,0.6,0.7,0.75,0.8,0.85,0.9,0.95]*255;
-interval = 10;
+interval = 1;
 
 
 %%
@@ -116,4 +116,4 @@ end
 PredictionFinal = [PredictionFinal,{Prediction}];
 UnrecordedPredFinal = [UnrecordedPredFinal,{UnrecordedPred}];
 end
-save('ICPR14_SampleIII2_pt5_orilabel.mat','thresholdList','interval','PredictionFinal','UnrecordedPredFinal')
+save('MitoDNN12_SampleIII1plus_revised_pt5_orilabel.mat','thresholdList','interval','PredictionFinal','UnrecordedPredFinal')

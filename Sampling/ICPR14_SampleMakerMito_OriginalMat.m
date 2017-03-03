@@ -3,6 +3,7 @@
 % Current code cannot handle corner samples
 
 load('FixedICPR14MitoCenter.mat')
+load('E:\LeeYuguang\MitosisExtraction\CodeCenter\Sampling\ICPR14split.mat')
 
 CHAR = 'abcd';
 CHAR_cap = 'ABCD';
@@ -30,7 +31,7 @@ end
 
 
 %% Making Samples
-for i = trainSet
+for i = 1:length(fileList)
 
   fileName = ['A', num2str(floor(fileList(i)/10000), '%02d')];
   temp = fileList(i) - floor(fileList(i)/10000) * 10000;
@@ -53,7 +54,10 @@ for i = trainSet
   disp(['Processing File ',fileName]);
   for mitoID = 1: size(locInfo,1)
     Loc = Loc + 1;
-
+    
+    ImageSet = cell(1,0);
+    NameSet = cell(1,0);
+    
     h = size(image,1);
     w = size(image,2);
     c = size(image,3);
@@ -97,10 +101,13 @@ for i = trainSet
 
 
             patchName = [fileName,'_',num2str(mitoID,'%02d')];
-            patchName = [patchName,'_',num2str(sampleID,'%04d'),'.tif'];
-            patchName = [outPath, 'pt', num2str(floor(score*10)), '\', patchName];
-
-            imwrite(outPatch, patchName);
+            patchName1 = [patchName,'_',num2str(sampleID,'%04d'),'.tif'];
+            
+            NameSet = [NameSet, {patchName1}];
+            ImageSet = [ImageSet, {outPatch}];
+            matName = [outPath, 'pt', num2str(floor(score*10)), '\', patchName, '.mat'];
+            
+            
           catch exception
 
             if Mark == 0
@@ -110,11 +117,14 @@ for i = trainSet
           end
         end
       end
+      
     end
-
-
-
+    
+    if (size(NameSet,2)>1)
+        save(matName, 'NameSet', 'ImageSet');
+    end
   end
-
+  
+  
 
 end
