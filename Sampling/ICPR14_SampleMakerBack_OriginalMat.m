@@ -1,6 +1,6 @@
 OriPath = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\OriginalFrames\train\x40\';
 OutPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_SamplePatches\SampleIV\back\';
-ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_Prediction\ICPR12_FT_Fast\';
+%ProbMapPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\ICPR14_Prediction\ICPR12_FT_Fast\';
 GT_Path = 'E:\LeeYuguang\MitosisExtraction\Original Datasets\ICPR14\GroundTruth\train\relabeled_x40_v2\';
 
 addpath('E:\LeeYuguang\MitosisExtraction\Toolbox\ICPR_Toolbox');
