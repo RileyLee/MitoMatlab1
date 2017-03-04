@@ -1,0 +1,37 @@
+clear
+predPath = 'E:\LeeYuguang\MitosisExtraction\DeepLearning\OrigDNN\Prediction_OrigDNN\RawPrediction\MitoDNN12_SampleIII1plus2_revised\Test\';
+displayFolder = 
+
+defaultThresh = 0.5;
+threshHash = [6, 0.5; 8, 0.3];
+
+fileList = dir([predPath, '*.png']);
+fileList = {fileList.name};
+
+detectedRegions = zeros(0, 11);
+
+for i = 1:length(fileList)
+    fileName = fileList{i};
+    disp(['Processing file ', fileName]);
+    group = str2num(fileName(2:3));
+    file_no = str2num(fileName(5:6));
+    split1 = int16(fileName(7) - 'A') + 1;
+    split2 = int16(fileName(8) - 'a') + 1;
+    
+    thresh = defaultThresh;
+    if length(find(threshHash(:,1)==6)) == 0
+        thresh = threshHash(find(threshHash(:,1)==6),2);
+    end
+    
+    image = imread([predPath, fileName]);
+    image_bw = (image >= thresh);
+    
+    label = bwlabel(image_bw);
+    regionInfo = regionprops(label, image, 'Area', 'Centroid', 'MeanIntensity', 'MaxIntensity', 'WeightedCentroid');
+    
+    for j = 1:size(regionInfo, 1)
+        entry = [group, file_no, split1, split2, regionInfo(j).Area, regionInfo(j).Centroid, regionInfo(j).MeanIntensity, regionInfo(j).MaxIntensity, regionInfo(j).WeightedCentroid];
+        detectedRegions = [detectedRegions; entry];
+    end
+    
+end
